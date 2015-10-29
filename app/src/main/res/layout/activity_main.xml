@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/bg"
+    android:background="@drawable/snow_sence"
+    tools:context=".MainActivity">
+   <LinearLayout
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/l_name"
+       android:visibility="gone"
+       android:orientation="horizontal">
+    <EditText android:text="@string/hello_world"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:id="@+id/input"
+        android:layout_height="wrap_content" />
+       <TextView
+           android:layout_width="wrap_content"
+           android:text="输入"
+           android:id="@+id/tv_plain"
+           android:layout_height="wrap_content" />
+   </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/l_name"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <EditText android:text="@string/hello_world"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <com.ylf.jucaipen.myview.FlowerView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/flowView"/>
+    <android.support.v4.view.ViewPager
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        android:id="@+id/vp_snow_sence"></android.support.v4.view.ViewPager>
+
+
+</RelativeLayout>
