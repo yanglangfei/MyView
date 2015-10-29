@@ -1,5 +1,8 @@
 package com.ylf.jucaipen.myview;
 
+import android.animation.ObjectAnimator;
+import android.animation.TimeInterpolator;
+import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.graphics.Color;
 import android.os.Build;
@@ -15,8 +18,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -41,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     public static int screenHeight;
     Timer myTimer = null;
     TimerTask mTask = null;
+    private  ImageView iv_girl;
     private static final int SNOW_BLOCK = 1;
     private RelativeLayout rl;
     private  int bgs[]={R.drawable.snow_sence,R.drawable.snow_sence1,R.drawable.snow_sence2,R.drawable.snow_sence3,R.drawable.snow_sence4};
@@ -105,21 +111,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         rl= (RelativeLayout) findViewById(R.id.bg);
-        new Thread(){
-            @Override
-            public void run() {
-                super.run();
-                while (true){
-                    try {
-                        Thread.sleep(2000);
-                        mHandler.obtainMessage(2).sendToTarget();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }.start();
-
         vp_snowSence= (ViewPager) findViewById(R.id.vp_snow_sence);
         View view1=new View(this);
         view1.setBackground(getResources().getDrawable(R.drawable.snow_sence));
@@ -138,6 +129,13 @@ public class MainActivity extends AppCompatActivity {
         views.add(view5);
        adapter=new SnowAdapter(views);
         vp_snowSence.setAdapter(adapter);
+        iv_girl= (ImageView) findViewById(R.id.iv_girl);
+        ObjectAnimator animator=ObjectAnimator.ofFloat(iv_girl,"translationX",0f,-2000f);
+        animator .setInterpolator(new LinearInterpolator());
+        animator.setRepeatCount(ValueAnimator.INFINITE);
+        animator.setRepeatMode(ValueAnimator.REVERSE);
+        animator.setDuration(1000 * 30);
+        animator.start();
 
 
         flowerView= (FlowerView) findViewById(R.id.flowView);
