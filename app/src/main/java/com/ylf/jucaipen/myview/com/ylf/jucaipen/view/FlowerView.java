@@ -1,4 +1,4 @@
-package com.ylf.jucaipen.myview;
+package com.ylf.jucaipen.myview.com.ylf.jucaipen.view;
 
 import java.util.Random;
 
@@ -6,18 +6,22 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
+
+import com.ylf.jucaipen.myview.R;
 
 
 public class FlowerView extends View {
-    private Animation animation;
-
     Bitmap mFlowers = null;
     MyFlower flowers [] = new MyFlower[50];
     private Integer[] offsetX ;
@@ -29,6 +33,9 @@ public class FlowerView extends View {
     int mW = 480;
     int mH = 800;
     float de = 0f;
+    private float y;
+    private float x;
+    private  Canvas canvas;
 
     public void setWH(int pW, int pH, float de){
         this.mW = pW;
@@ -48,12 +55,12 @@ public class FlowerView extends View {
 
     public FlowerView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        animation= AnimationUtils.loadAnimation(context,R.anim.snow_trans);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        this.canvas=canvas;
         for (int i = 0; i < flowers.length; i++) {
             MyFlower rect = flowers[i];
             int t = rect.t;
@@ -78,7 +85,6 @@ public class FlowerView extends View {
             flowers[i] = rect;
         }
     }
-
 
 
     public void loadFlower(){

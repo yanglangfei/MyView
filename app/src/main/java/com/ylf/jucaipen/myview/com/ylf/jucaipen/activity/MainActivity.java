@@ -1,8 +1,7 @@
-package com.ylf.jucaipen.myview;
+package com.ylf.jucaipen.myview.com.ylf.jucaipen.activity;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Color;
@@ -11,17 +10,17 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.ylf.jucaipen.myview.R;
+import com.ylf.jucaipen.myview.com.ylf.jucaipen.view.FlowerView;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -67,7 +66,6 @@ public class MainActivity extends Activity {
         initView();
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void initView() {
         tv_plain= (TextView) findViewById(R.id.tv_plain);
         input= (EditText) findViewById(R.id.input);
@@ -114,7 +112,6 @@ public class MainActivity extends Activity {
                 .getWidth();//获取屏幕宽度
         screenHeight = getWindow().getWindowManager().getDefaultDisplay()
                 .getHeight();//获取屏幕高度
-
         iv_girl= (ImageView) findViewById(R.id.iv_girl);
         animal= (AnimationDrawable) iv_girl.getDrawable();
         ObjectAnimator animator=ObjectAnimator.ofFloat(iv_girl,"translationX",0f,-screenWidth);
@@ -128,9 +125,6 @@ public class MainActivity extends Activity {
                 float values= (float) animations.getAnimatedValue();
             }
         });
-
-
-
         DisplayMetrics dis = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dis);
         float de = dis.density;
@@ -141,13 +135,12 @@ public class MainActivity extends Activity {
         mTask=new TimerTask() {
             @Override
             public void run() {
-             mHandler.obtainMessage(SNOW_BLOCK).sendToTarget();
+              mHandler.obtainMessage(SNOW_BLOCK).sendToTarget();
             }
         };
         myTimer.schedule(mTask,3000,10);
         animator.start();
         animal.start();
-
     }
 
     @Override

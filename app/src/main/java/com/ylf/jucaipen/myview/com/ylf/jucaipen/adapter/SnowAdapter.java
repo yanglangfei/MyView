@@ -1,4 +1,4 @@
-package com.ylf.jucaipen.myview;
+package com.ylf.jucaipen.myview.com.ylf.jucaipen.adapter;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
