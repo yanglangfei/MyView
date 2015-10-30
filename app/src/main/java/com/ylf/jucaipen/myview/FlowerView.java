@@ -53,14 +53,7 @@ public class FlowerView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        // TODO Auto-generated method stub
         super.onDraw(canvas);
-        Resources resources=getResources();
-        Bitmap bm=((BitmapDrawable)resources.getDrawable(R.drawable.j)).getBitmap();
-        Matrix matrix=new Matrix();
-        matrix.postTranslate(100,100);
-        matrix.postRotate(180,bm.getWidth()/2,bm.getHeight()/2);
-        canvas.drawBitmap(bm,matrix,p);
         for (int i = 0; i < flowers.length; i++) {
             MyFlower rect = flowers[i];
             int t = rect.t;
