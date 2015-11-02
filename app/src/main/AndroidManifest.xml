@@ -9,11 +9,10 @@
         android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         <activity
             android:screenOrientation="landscape"
-            android:name=".com.ylf.jucaipen.activity.TestActivity"
+            android:name=".com.ylf.jucaipen.activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -141,6 +141,13 @@ public class MainActivity extends Activity {
         myTimer.schedule(mTask,3000,10);
         animator.start();
         animal.start();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.setLooping(true);
+                mp.start();
+            }
+        });
     }
 
     @Override
